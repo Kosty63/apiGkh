@@ -16,6 +16,6 @@ class MeterHistoryOrm(Base):
     __tablename__ = 'meter_history'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    meter_id: Mapped[int] = mapped_column(ForeignKey('meter.id'))
+    meter_id: Mapped[int] = mapped_column(ForeignKey('meters.id'))
     reading_date: Mapped[int]
     value: Mapped[int]

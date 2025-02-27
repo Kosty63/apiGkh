@@ -6,7 +6,7 @@ from src.database import Base
 """
 Payments History Model (История платежей)
 id (Primary Key) - Уникальный идентификатор платежа.
-account_id (Foreign Key) - Ссылка на лицевой счет.
+personal_account_id (Foreign Key) - Ссылка на лицевой счет.
 payment_date - Дата платежа.
 amount - Сумма платежа.
 payment_method - Способ оплаты (например, наличные, карта, онлайн).
@@ -14,10 +14,10 @@ payment_method - Способ оплаты (например, наличные, 
 
 
 class PaymentsHistoryOrm(Base):
-    __tablename__ = 'payments'
+    __tablename__ = 'payments_history'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    account_id: Mapped[str] = mapped_column(ForeignKey('accounts.id'))
+    personal_account_id: Mapped[int] = mapped_column(ForeignKey("personal_accounts.id"))
     payment_date: Mapped[str]
     amount: Mapped[str]
     payment_method: Mapped[str]

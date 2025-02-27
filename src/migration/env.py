@@ -7,12 +7,21 @@ from alembic import context
 
 from src.config import settings
 from src.database import Base
+from src.models.addresses import AddressesOrm
+from src.models.charges import ChargesOrm
+from src.models.meter_history import MeterHistoryOrm
+from src.models.meters import MetersOrm
+from src.models.owners import OwnersOrm
+from src.models.payments_history import PaymentsHistoryOrm
+from src.models.personal_accounts import PersonalAccountsOrm
+from src.models.services import ServicesOrm
+from src.models.users import UsersOrm
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_main_option("sqlalchemy.url", settings.DB_URL)
+config.set_main_option("sqlalchemy.url", f"{settings.DB_URL}?async_fallback=True")
 
 
 # Interpret the config file for Python logging.
